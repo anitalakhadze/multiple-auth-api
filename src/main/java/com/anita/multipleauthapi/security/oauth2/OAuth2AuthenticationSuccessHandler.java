@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.Optional;
 
-import static com.anita.multipleauthapi.security.oauth2.HttpCookieOAuth2AuthorizationRequestReqpository.REDIRECT_URI_PARAM_COOKIE_NAME;
+import static com.anita.multipleauthapi.security.oauth2.HttpCookieOAuth2AuthorizationRequestRepository.REDIRECT_URI_PARAM_COOKIE_NAME;
 
 @Component
 @RequiredArgsConstructor
@@ -26,7 +26,7 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
 
     private final TokenProvider tokenProvider;
     private final AppProperties appProperties;
-    private final HttpCookieOAuth2AuthorizationRequestReqpository httpCookieOAuth2AuthorizationRequestReqpository;
+    private final HttpCookieOAuth2AuthorizationRequestRepository httpCookieOAuth2AuthorizationRequestRepository;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
@@ -61,7 +61,7 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
 
     protected void clearAuthenticationAttributes(HttpServletRequest request, HttpServletResponse response) {
         super.clearAuthenticationAttributes(request);
-        httpCookieOAuth2AuthorizationRequestReqpository.removeAuthorizationRequestCookies(request, response);
+        httpCookieOAuth2AuthorizationRequestRepository.removeAuthorizationRequestCookies(request, response);
     }
 
     private boolean isAuthorizedRedirectUri(String uri) {
