@@ -18,10 +18,12 @@ import java.util.Date;
 public class TokenProvider {
 
     private final AppProperties appProperties;
-    private final Algorithm ALGORITHM = Algorithm.HMAC256(appProperties.getAuth().getTokenSecret());
+    private Algorithm ALGORITHM;
 
     public String createToken(Authentication authentication) {
         UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
+
+        ALGORITHM = Algorithm.HMAC256(appProperties.getAuth().getTokenSecret());
 
         Date now = new Date();
         Date expirationDate = new Date(now.getTime() + appProperties.getAuth().getTokenExpirationMsec());
