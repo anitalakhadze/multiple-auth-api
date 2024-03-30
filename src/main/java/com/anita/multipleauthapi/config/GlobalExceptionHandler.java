@@ -15,7 +15,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler
-    public ResponseEntity<ErrorMessage> handleIllegalArgumentException(AuthenticationException e) {
+    public ResponseEntity<ErrorMessage> handleAuthenticationException(AuthenticationException e) {
         ErrorMessage errorMessage = new ErrorMessage(
                 e.getMessage(),
                 HttpStatus.UNAUTHORIZED
@@ -24,7 +24,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         log.error("AuthenticationException: ", e);
 
         return ResponseEntity
-                .status(HttpStatus.BAD_REQUEST)
+                .status(HttpStatus.UNAUTHORIZED)
                 .body(errorMessage);
     }
 
