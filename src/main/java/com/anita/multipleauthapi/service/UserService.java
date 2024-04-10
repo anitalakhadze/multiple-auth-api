@@ -20,16 +20,7 @@ public class UserService {
                 .findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found with ID: %s.".formatted(id)));
 
-        return mapToUserResponse(user);
-    }
-
-    private static UserResponse mapToUserResponse(User user) {
-        UserResponse userResponse = new UserResponse();
-        userResponse.setId(user.getId());
-        userResponse.setEmail(user.getEmail());
-        userResponse.setFirstname(user.getFirstname());
-        userResponse.setLastname(user.getLastname());
-        return userResponse;
+        return UserMapper.mapToUserResponse(user);
     }
 
 }

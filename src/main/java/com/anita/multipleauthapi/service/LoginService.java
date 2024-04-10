@@ -1,9 +1,10 @@
 package com.anita.multipleauthapi.service;
 
 import com.anita.multipleauthapi.model.entity.User;
-import com.anita.multipleauthapi.model.error.BadRequestException;
-import com.anita.multipleauthapi.model.payload.LoginResponse;
+import com.anita.multipleauthapi.model.error.BadCredentialsException;
+import com.anita.multipleauthapi.model.error.UserNotFoundException;
 import com.anita.multipleauthapi.model.payload.LoginRequest;
+import com.anita.multipleauthapi.model.payload.LoginResponse;
 import com.anita.multipleauthapi.repository.UserRepository;
 import com.anita.multipleauthapi.security.TokenProvider;
 import lombok.RequiredArgsConstructor;
@@ -32,7 +33,7 @@ public class LoginService {
 
         User user = userRepository
                 .findByEmail(loginRequest.getEmail())
-                .orElseThrow(() -> new BadRequestException("Email not registered by administrator yet."));
+                .orElseThrow(() -> new UserNotFoundException("Email not registered by administrator yet."));
 
         if (StringUtils.isEmpty(user.getPassword())) {
             user.setPassword(passwordEncoder.encode(loginRequest.getPassword()));
@@ -47,7 +48,7 @@ public class LoginService {
                     )
             );
         } catch (AuthenticationException ex) {
-            throw new BadRequestException("Bad credentials");
+            throw new BadCredentialsException("Invalid email or password.");
         }
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
