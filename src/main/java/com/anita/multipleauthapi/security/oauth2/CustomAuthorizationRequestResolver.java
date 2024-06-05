@@ -34,7 +34,8 @@ public class CustomAuthorizationRequestResolver implements OAuth2AuthorizationRe
 
     @Override
     public OAuth2AuthorizationRequest resolve(HttpServletRequest request, String clientRegistrationId) {
-        return null;
+        OAuth2AuthorizationRequest req = defaultResolver.resolve(request, clientRegistrationId);
+        return customizeAuthorizationRequest(req);
     }
 
 

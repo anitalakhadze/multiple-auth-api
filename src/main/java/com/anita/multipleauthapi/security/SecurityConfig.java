@@ -32,7 +32,7 @@ import java.util.Arrays;
 public class SecurityConfig {
 
     private final static String OAUTH2_BASE_URI = "/oauth2/authorize";
-    private final static String OAUTH2_REDIRECTION_ENDPOINT = "/oauth2/callback";
+    private final static String OAUTH2_REDIRECTION_ENDPOINT = "/oauth2/callback/*";
 
     private final CustomOAuth2UserService customOAuth2UserService;
     private final OAuth2AuthenticationFailureHandler oAuth2AuthenticationFailureHandler;
@@ -54,10 +54,6 @@ public class SecurityConfig {
         http.sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         http.formLogin(AbstractHttpConfigurer::disable);
         http.httpBasic(AbstractHttpConfigurer::disable);
-
-        //        http.exceptionHandling(httpSecurityExceptionHandlingConfigurer -> httpSecurityExceptionHandlingConfigurer
-//                .authenticationEntryPoint(new RestAuthenticationEntryPoint())
-//        );
 
         http.authorizeHttpRequests(
           auth -> auth
