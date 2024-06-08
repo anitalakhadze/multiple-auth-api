@@ -17,7 +17,7 @@ The backend app is meant to be run together with the frontend Angular applicatio
 
       Don't change the port configuration when running in a local environment. The syntax of the mapping is for extra security, so that the database is not accessible from outside the container.
 
-      If you change the password to the postgresql database, make sure to update the password in the application.properties file of the **_user-app-api_** project.
+      If you change the password to the postgresql database, make sure to update the password in the application.properties file of the **_multiple-auth-api_** project.
     - If you need to connect to the postgresql database container, run the following command:
 
       `docker exec -it multiple-auth-app-postgres bash`
@@ -45,7 +45,7 @@ The backend app is meant to be run together with the frontend Angular applicatio
     - Run the following command from the root directory of the project:
 
       `ng serve`
-    - Default port for the user-app-ui is 4200. If you want to change the port, update the port in the angular.json file. On the following path: _projects -> user-management-app-ui -> architect -> serve_ add this:
+    - Default port for the multiple-auth-ui is 4200. If you want to change the port, update the port in the angular.json file. On the following path: _multiple-auth-ui -> architect -> serve_ add this:
         ```
         "options": {
             "port": [desired-port]
