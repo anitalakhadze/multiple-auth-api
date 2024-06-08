@@ -54,3 +54,13 @@ The backend app is meant to be run together with the frontend Angular applicatio
         - Make sure to update authorized redirect uri usage places in the _multiple-auth-api_ too.
 4. **Register a user in the database**
     - Open the database (either from your IDE or command-line) and create a new record in _users_ table containing only the email address with which you are planning to log in to the application. Without a registered email address, you won't be allowed to log in. Some login providers also require to register test user email addresses upfront (Google, for example), so make sure you don't skip this step as well (view more information [here](https://blog.devgenius.io/part-3-implementing-authentication-with-spring-boot-security-6-oauth2-and-angular-17-via-8716646ed062)).
+
+## Are you curious about the development process?  
+If you find this project useful, visit the following blogs and follow the creation project step-by-step:
+- [PART 1 - Setting up backend project and security configurations](https://medium.com/dev-genius/implementing-authentication-with-spring-boot-security-6-oauth2-and-angular-17-via-multiple-4144075e5fef)
+- [PART 2 - Setting up service and controller layers](https://medium.com/dev-genius/implementing-authentication-with-spring-boot-security-6-oauth2-and-angular-17-via-multiple-b48789a3777e)
+- [PART 3 - Getting authorization credentials for Google, GitHub and Twitter](https://medium.com/dev-genius/part-3-implementing-authentication-with-spring-boot-security-6-oauth2-and-angular-17-via-8716646ed062)
+- [PART 4 - Developing a minimal Angular application](https://medium.com/@anitalakhadze/part-4-implementing-authentication-with-spring-boot-security-6-oauth2-and-angular-17-via-df3fbb003946)
+
+Don’t forget to clap if you enjoyed the series and subscribe to stay updated with the upcoming content.
+
